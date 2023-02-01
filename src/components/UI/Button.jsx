@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-const Button = ({children, variant = "contained", borderRadius='rounded'}) => {
+const Button = ({children, variant = "contained", borderRadius='rounded', ...restProps}) => {
   return (
-    <StyledButton variant={variant} borderRadius={borderRadius}>{children}</StyledButton>
+    <StyledButton {...restProps} variant={variant} borderRadius={borderRadius}>{children}</StyledButton>
   )
 }
 

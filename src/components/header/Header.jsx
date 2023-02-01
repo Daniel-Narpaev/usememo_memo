@@ -1,12 +1,38 @@
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
+import { BasketContext } from "../../store/BasketContext"
 import BasketButton from "./BasketButton"
 
 
-const Header = () => {
+const Header = ({ onShowBasket }) => {
+  const { items } = useContext(BasketContext)
+  const [animationClass, setAnimationClass] = useState("")
+
+  const calculateTotalAmount = ()=>{
+   const sum = items.reduce((s, item)=>{
+    return s + item.amount
+   },0)
+   return sum
+  }
+
+   useEffect(()=>{
+   setAnimationClass("bump")
+
+   const id = setTimeout(()=>{
+     setAnimationClass('')
+   },300)
+   return ()=>{
+    clearTimeout(id)
+   }
+   }, [items])
   return (
     <Container>
         <Logo>ReactMeals</Logo>
-      <BasketButton count="7"/>
+      <BasketButton
+      className={animationClass}
+      onClick={onShowBasket}  
+      count={calculateTotalAmount()}
+      />
     </Container>
   )
 }

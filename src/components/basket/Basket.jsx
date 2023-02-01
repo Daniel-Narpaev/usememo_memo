@@ -1,55 +1,47 @@
+import { useContext } from "react"
 import styled from "styled-components"
+import { BasketContext, } from "../../store/BasketContext"
 import Modal from "../UI/Modal"
 import BasketItem from "./BasketItem"
 import TotalAmount from "./TotalAmount"
 
-const Basket = () => {
-  const items = [
-    {
-      id:"1",
-      title:"Sushi",
-      price:22.99,
-      amount:1,
-    },
-  
-    {
-      id:"2",
-      title:"Schnitzel",
-      price:16.00,
-      amount:1,
-    },
-  
-    {
-      id:"3",
-      title:"Barbecue Burger",
-      price:12.99,
-      amount:1,
-    },
-  
-    {
-      id:"4",
-      title:"Green Bowl",
-      price:19.99,
-      amount:1,
-    },
-  ]
+const Basket = ({onClose}) => {
+  const { items, updateBasketItem, deleteBasketItem } = useContext(BasketContext)
+
+  const getTotalPrice = ()=>{
+    return items.reduce((sum, {price, amount}) => sum + price * amount, 0)
+  }
+  const incrimentAmount = ( id, amount )=>{
+    updateBasketItem({amount: amount + 1, id: id})
+   
+ }
+ const dicrimentAmount = ( id, amount )=>{
+  if (amount > 1) {
+    updateBasketItem({amount: amount - 1, id: id})
+   }else{
+    deleteBasketItem(id)
+   }
+ }
   return (
-    <Modal onCose={()=>{}}>
+    <Modal onClose={()=>{}}>
       <Content>
         {items.length ? (
           <FixedHeightContainer>
           {items.map((item)=>{
-          return  (
+          return (
           <BasketItem 
-               key={item.id}
+               key={item._id}
                title={item.title} 
                price={item.price} 
-               amount={item.amount}/>
+               amount={item.amount}
+               incrimentAmount={() => incrimentAmount(item._id, item.amount)}
+               dicrimentAmount={() => dicrimentAmount(item._id, item.amount)}
+          />
         )})}
         </FixedHeightContainer>
         ):null}
         
-        <TotalAmount price={200.5034} onClose={()=>{}} onOrderө={()=>{} }/>
+        <TotalAmount price={getTotalPrice()} onClose={onClose} onOrder={()=>{} }/>
       </Content>
     </Modal>
   )

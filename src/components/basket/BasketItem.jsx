@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 import Button from '../UI/Button'
-import {ReactComponent as IncrimentIcon} from "../../assets/icons/incriment-icons.svg"
-import {ReactComponent as DicrimentIcon} from "../../assets/icons/dicriment-icons.svg"
 
+const BasketItem = ({ title, price, amount, dicrimentAmount, incrimentAmount}) => {
 
-const BasketItem = ({ title, price, amount }) => {
   return (
     <Container>
         <Title>{title}</Title>
@@ -14,8 +12,8 @@ const BasketItem = ({ title, price, amount }) => {
               <Amount>x{amount}</Amount>
             </PriceAndAmountContainer>
             <CounterContainer>
-               <Button borderRadius='squared' variant='outlined'>-</Button>
-               <Button borderRadius='squared' variant='outlined'>+</Button>
+               <Button borderRadius='squared' variant='outlined' onClick={dicrimentAmount}>-</Button>
+               <Button borderRadius='squared' variant='outlined' onClick={incrimentAmount}>+</Button>
             </CounterContainer>
         </Content>
     </Container>
@@ -24,7 +22,7 @@ const BasketItem = ({ title, price, amount }) => {
 
 export default BasketItem
 
-const Container = styled.div`
+const Container = styled.div` 
     padding: 24px 0;
     width: 100%;
 `
