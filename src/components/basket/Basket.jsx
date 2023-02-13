@@ -13,8 +13,7 @@ const Basket = ({onClose}) => {
   }
   const incrimentAmount = ( id, amount )=>{
     updateBasketItem({amount: amount + 1, id: id})
-   
- }
+  }
  const dicrimentAmount = ( id, amount )=>{
   if (amount > 1) {
     updateBasketItem({amount: amount - 1, id: id})

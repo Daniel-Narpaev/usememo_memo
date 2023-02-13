@@ -10,7 +10,6 @@ export const BasketContext = createContext({
    const [items, setItems] = useState([])
    //////////////////////
    const updateBasketItem = async({id, amount})=>{
-    console.log(id)
      try {
         const { data } = await fetchApi(`basketItem/${id}/update`, {
             method: "PUT",
@@ -24,7 +23,6 @@ export const BasketContext = createContext({
    }
 /////////////////////////
 const deleteBasketItem = async(id)=>{
-    console.log(id)
     try {
        const { data } = await fetchApi(`basketItem/${id}/delete`, {
            method: "DELETE",
@@ -71,7 +69,10 @@ const deleteBasketItem = async(id)=>{
        deleteBasketItem,
    }
 
-    return <BasketContext.Provider value={state}>{children}</BasketContext.Provider>
+    return (
+    <BasketContext.Provider value={state}>
+      {children}
+      </BasketContext.Provider>)
  }
  
  
