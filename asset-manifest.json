@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/usememo_memo/static/css/main.8db0bb76.css",
+    "main.js": "/usememo_memo/static/js/main.a48c7af6.js",
+    "static/media/BackgroundImg.jpg": "/usememo_memo/static/media/BackgroundImg.0eb26fbec2e8b4d6fde1.jpg",
+    "static/media/Basket-icon.svg": "/usememo_memo/static/media/Basket-icon.b8d33e94afa151b65893c6647ec288c8.svg",
+    "index.html": "/usememo_memo/index.html",
+    "static/media/plus-icon.svg": "/usememo_memo/static/media/plus-icon.f6449d6005345c09378ddf02e862b973.svg",
+    "main.8db0bb76.css.map": "/usememo_memo/static/css/main.8db0bb76.css.map",
+    "main.a48c7af6.js.map": "/usememo_memo/static/js/main.a48c7af6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8db0bb76.css",
+    "static/js/main.a48c7af6.js"
+  ]
+}
